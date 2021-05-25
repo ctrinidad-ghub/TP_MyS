@@ -7,14 +7,20 @@ end;
 architecture lcd_controller_wrapper_tb_arq of lcd_controller_wrapper_tb is
 
     component lcd_controller_wrapper is
+        generic (
+            MODE_8_BITS  : std_logic := '1';
+            LCD_COLUMNS  : std_logic_vector(4 downto 0) := "10100"; -- 20
+            LCD_ROWS     : std_logic_vector(1 downto 0) := "11";    -- 4
+            FREQ         : integer := 1
+        );
         port ( 
-            clk, rst :IN std_logic;
-            read, write : IN std_logic;
-            writedata : IN std_logic_vector(31 downto 0);
-            readdata : OUT std_logic_vector(31 downto 0);
-            rw, rs, en  : out std_logic;
-            data_out    : out std_logic_vector(7 downto 0)
-            );
+            clk, rst : in std_logic;
+            read, write     : in std_logic;
+            writedata       : in std_logic_vector(31 downto 0);
+            readdata        : out std_logic_vector(31 downto 0);
+            rw, rs, en      : out std_logic;                     --read/write, setup/data, and enable for lcd
+            data_out        : out std_logic_vector(7 downto 0)   --data output to LCD
+        );
     end component;
 
     signal clk         : std_logic := '0';
@@ -61,6 +67,12 @@ begin
     read <= '0';
 
     DUT: lcd_controller_wrapper
+        generic map (
+            MODE_8_BITS => '0',      -- 4bits
+            LCD_COLUMNS => "10100",  -- 20
+            LCD_ROWS => "11",        -- 4
+            FREQ => 50               -- clk = 50Mhz
+        )
         port map ( 
             clk => clk,
             rst => rst,
