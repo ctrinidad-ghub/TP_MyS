@@ -1,0 +1,1 @@
+gtkwave lcd_controller_wrapper_tb.vcd
