@@ -16,6 +16,7 @@ architecture lcd_controller_wrapper_tb_arq of lcd_controller_wrapper_tb is
         port ( 
             clk, rst : in std_logic;
             read, write     : in std_logic;
+            address         : in std_logic_vector(1 downto 0);
             writedata       : in std_logic_vector(31 downto 0);
             readdata        : out std_logic_vector(31 downto 0);
             rw, rs, en      : out std_logic;                     --read/write, setup/data, and enable for lcd
@@ -36,6 +37,7 @@ architecture lcd_controller_wrapper_tb_arq of lcd_controller_wrapper_tb is
     signal column      : std_logic_vector(4 downto 0);
     signal row         : std_logic_vector(1 downto 0);
 
+    signal address     : std_logic_vector(1 downto 0);
     signal writedata   : std_logic_vector(31 downto 0);
     signal readdata    : std_logic_vector(31 downto 0);
     signal read        : std_logic;
@@ -47,22 +49,25 @@ begin
             '0' after 10 ns when clk = '1';
             -- not clk after 10 ns;
     ena <= '0' after 10 ns, '1' after 50 ns;
-	
+
     -- cursor positioning
     new_goto <= '0' after 0 ns, '1' after 53000010 ns, '0' after 53000030 ns;
     column <= "00010";
     row <= "11";
-    
-    -- write data
-    --data_in => to_lcd_controller(7 downto 0),
-    --new_data => to_lcd_controller(8),
-    --row  => to_lcd_controller(17 downto 16),
-    --column => to_lcd_controller(22 downto 18),
-    --new_goto => to_lcd_controller(23),
-    writedata <= "00000000" & new_goto & column & row & "0000000" & new_data & data_in;
+
+    -- Avalon address
+    address <=  "00" when new_data = '1' else
+                "01" when new_goto = '1' else
+                (others => 'Z');
+
+    -- Avalon write operation
+    writedata <= "000000000000000000000000" & data_in when new_data = '1' else
+                 "0000000000000000000000000" & column & row when new_goto = '1' else
+                 (others => 'Z');
+
     write <= new_data or new_goto;
 
-    -- read data
+    -- Avalon read operation
     busy <= readdata(0);
     read <= '0';
 
@@ -78,6 +83,7 @@ begin
             rst => rst,
             read => read,
             write => write,
+            address => address,
             writedata => writedata,
             readdata => readdata,
             rw => rw,

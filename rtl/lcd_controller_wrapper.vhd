@@ -11,6 +11,7 @@ entity lcd_controller_wrapper is
     port ( 
         clk, rst : in std_logic;
         read, write     : in std_logic;
+        address         : in std_logic_vector(1 downto 0);
         writedata       : in std_logic_vector(31 downto 0);
         readdata        : out std_logic_vector(31 downto 0);
         rw, rs, en      : out std_logic;                     --read/write, setup/data, and enable for lcd
@@ -19,9 +20,12 @@ entity lcd_controller_wrapper is
 end lcd_controller_wrapper;
 
 architecture lcd_controller_wrapper_arq of lcd_controller_wrapper is
-    signal to_lcd_controller : std_logic_vector(31 downto 0);
-    --signal from_lcd_controller : std_logic_vector(11 downto 0);
-    signal busy              : std_logic;
+    signal new_data    : std_logic;
+    signal data_in     : std_logic_vector(7 downto 0);
+    signal new_goto    : std_logic := '0';
+    signal column      : std_logic_vector(4 downto 0);
+    signal row         : std_logic_vector(1 downto 0);
+    signal busy        : std_logic;
 
 	component lcd_controller is
         generic (
@@ -48,11 +52,28 @@ BEGIN
     write_data: process(clk, rst)
     begin
         if rst = '1' then
-            to_lcd_controller <= "00000000000000000000000000000000";
+            new_data <= '0';
+            data_in <= "00000000";
+            new_goto <= '0';
+            column <= "00000";
+            row  <= "00";
         elsif rising_edge(clk) then
-            to_lcd_controller <= "00000000000000000000000000000000";
+            new_data <= '0';
+            data_in <= "00000000";
+            new_goto <= '0';
+            column <= "00000";
+            row  <= "00";
+
             if (write = '1') then
-                to_lcd_controller <= writedata;
+                -- to_lcd_controller <= writedata;
+                if (address = "00") then
+                    new_data <= '1';
+                    data_in <= writedata(7 downto 0);
+                elsif (address = "01") then
+                    new_goto <= '1';
+                    column <= writedata(6 downto 2);
+                    row  <= writedata(1 downto 0);
+                end if;
             end if;
         end if;
     end process;
@@ -67,11 +88,11 @@ BEGIN
     port map (
         clk => clk,
         rst => rst,
-        new_data => to_lcd_controller(8),
-        data_in => to_lcd_controller(7 downto 0),
-        new_goto => to_lcd_controller(23),
-        column => to_lcd_controller(22 downto 18),
-        row  => to_lcd_controller(17 downto 16),
+        new_data => new_data,
+        data_in => data_in,
+        new_goto => new_goto,
+        column => column,
+        row  => row,
         busy => busy,
         rw => rw,
         rs => rs,
