@@ -9,11 +9,13 @@ entity lcd_controller_wrapper is
         FREQ         : integer := 1
     );
     port ( 
-        clk, rst : in std_logic;
+        clk, rst        : in std_logic;
+        -- Avalon bus
         read, write     : in std_logic;
         address         : in std_logic_vector(1 downto 0);
         writedata       : in std_logic_vector(31 downto 0);
         readdata        : out std_logic_vector(31 downto 0);
+        -- LCD outputs
         rw, rs, en      : out std_logic;                     --read/write, setup/data, and enable for lcd
         data_out        : out std_logic_vector(7 downto 0)   --data output to LCD
     );
@@ -47,7 +49,7 @@ architecture lcd_controller_wrapper_arq of lcd_controller_wrapper is
             data_out    : out std_logic_vector(7 downto 0)
         );
 	end component;
-BEGIN
+begin
 
     write_data: process(clk, rst)
     begin
@@ -65,7 +67,6 @@ BEGIN
             row  <= "00";
 
             if (write = '1') then
-                -- to_lcd_controller <= writedata;
                 if (address = "00") then
                     new_data <= '1';
                     data_in <= writedata(7 downto 0);
@@ -100,5 +101,6 @@ BEGIN
         data_out => data_out
     );
 
-    readdata <= "0000000000000000000000000000000" & busy;
-END lcd_controller_wrapper_arq;
+    readdata <= "0000000000000000000000000000000" & busy when read = '1' and address = "10" else
+                (others => '0');
+end lcd_controller_wrapper_arq;

@@ -48,7 +48,7 @@ begin
     clk <=  '1' after 10 ns when clk = '0' else
             '0' after 10 ns when clk = '1';
             -- not clk after 10 ns;
-    ena <= '0' after 10 ns, '1' after 50 ns;
+    ena <= '0' after 10 ns, '1' after 50 us;
 
     -- cursor positioning
     new_goto <= '0' after 0 ns, '1' after 53000010 ns, '0' after 53000030 ns;
@@ -58,6 +58,7 @@ begin
     -- Avalon address
     address <=  "00" when new_data = '1' else
                 "01" when new_goto = '1' else
+                "10" when read = '1' else
                 (others => 'Z');
 
     -- Avalon write operation
@@ -66,10 +67,6 @@ begin
                  (others => 'Z');
 
     write <= new_data or new_goto;
-
-    -- Avalon read operation
-    busy <= readdata(0);
-    read <= '0';
 
     DUT: lcd_controller_wrapper
         generic map (
@@ -94,14 +91,20 @@ begin
 
     process(clk)
         variable char : integer range 0 to 12 := 0;
+        variable counter_read : integer range 0 to 50 := 0;
     begin
         if rst = '1' then
             new_data <= '0';
             new_data_d <= '0';
             data_in <= "00000000";
+            busy <= '1';
         elsif rising_edge(clk) then
-            new_data_d <= new_data;
-            if (busy = '0' and new_data = '0' and ena = '1'and new_data_d = '0') then
+            -- Avalon read operation
+            if (read = '1') then
+                busy <= readdata(0);
+            end if;
+
+            if (busy = '0' and new_data = '0' and ena = '1'and new_data_d = '1') then
                 new_data <= '1';
                 if (char < 12) then
                     char := char + 1;
@@ -123,6 +126,16 @@ begin
                 end case;
             else
                 new_data <= '0';
+            end if;
+
+            new_data_d <= read;
+
+            if (counter_read < 50) then
+                counter_read := counter_read + 1;
+                read <= '0';
+            else 
+                counter_read := 0;
+                read <= '1';
             end if;
         end if;
     end process;
