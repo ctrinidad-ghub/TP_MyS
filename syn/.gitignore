@@ -1,8 +1,14 @@
 db
 incremental_db
-output_files
 simulation
-*.*info
 *dump*
 obj
 soc_NiosII
+*.rpt
+*.done
+*.smsg
+*.summary
+*.jdi
+*.pin
+*.sld
+*.qws
