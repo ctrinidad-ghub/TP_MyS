@@ -1,0 +1,529 @@
+Archive member included to satisfy reference by file (symbol)
+
+../lcd_firmware_bsp//libhal_bsp.a(alt_load.o)
+                              ../lcd_firmware_bsp//obj/HAL/src/crt0.o (alt_load)
+../lcd_firmware_bsp//libhal_bsp.a(alt_main.o)
+                              ../lcd_firmware_bsp//obj/HAL/src/crt0.o (alt_main)
+../lcd_firmware_bsp//libhal_bsp.a(alt_printf.o)
+                              obj/default/main.o (alt_printf)
+../lcd_firmware_bsp//libhal_bsp.a(alt_putchar.o)
+                              ../lcd_firmware_bsp//libhal_bsp.a(alt_printf.o) (alt_putchar)
+../lcd_firmware_bsp//libhal_bsp.a(alt_putstr.o)
+                              obj/default/main.o (alt_putstr)
+../lcd_firmware_bsp//libhal_bsp.a(alt_sys_init.o)
+                              ../lcd_firmware_bsp//libhal_bsp.a(alt_main.o) (alt_irq_init)
+../lcd_firmware_bsp//libhal_bsp.a(altera_avalon_jtag_uart_write.o)
+                              ../lcd_firmware_bsp//libhal_bsp.a(alt_putchar.o) (altera_avalon_jtag_uart_write)
+../lcd_firmware_bsp//libhal_bsp.a(alt_dcache_flush_all.o)
+                              ../lcd_firmware_bsp//libhal_bsp.a(alt_load.o) (alt_dcache_flush_all)
+../lcd_firmware_bsp//libhal_bsp.a(alt_icache_flush_all.o)
+                              ../lcd_firmware_bsp//libhal_bsp.a(alt_load.o) (alt_icache_flush_all)
+../lcd_firmware_bsp//libhal_bsp.a(altera_nios2_gen2_irq.o)
+                              ../lcd_firmware_bsp//libhal_bsp.a(alt_sys_init.o) (altera_nios2_gen2_irq_init)
+../lcd_firmware_bsp//libhal_bsp.a(alt_icache_flush.o)
+                              ../lcd_firmware_bsp//libhal_bsp.a(alt_icache_flush_all.o) (alt_icache_flush)
+/home/cristian/intelfpga_lite/20.1/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/10.1.1/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libsmallc.a(lib_a-memcpy.o)
+                              ../lcd_firmware_bsp//libhal_bsp.a(alt_load.o) (memcpy)
+/home/cristian/intelfpga_lite/20.1/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/10.1.1/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libsmallc.a(lib_a-strlen.o)
+                              ../lcd_firmware_bsp//libhal_bsp.a(alt_putstr.o) (strlen)
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+reset            0x0000000000008000 0x0000000000000020
+onchip_memory2_0 0x0000000000008020 0x0000000000007fe0
+*default*        0x0000000000000000 0xffffffffffffffff
+
+Linker script and memory map
+
+LOAD ../lcd_firmware_bsp//obj/HAL/src/crt0.o
+LOAD obj/default/main.o
+LOAD /home/cristian/intelfpga_lite/20.1/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/10.1.1/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libstdc++.a
+LOAD /home/cristian/intelfpga_lite/20.1/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/10.1.1/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libm.a
+LOAD /home/cristian/intelfpga_lite/20.1/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/10.1.1/libgcc.a
+START GROUP
+LOAD /home/cristian/intelfpga_lite/20.1/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/10.1.1/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libsmallc.a
+LOAD /home/cristian/intelfpga_lite/20.1/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/10.1.1/libgcc.a
+LOAD ../lcd_firmware_bsp//libhal_bsp.a
+LOAD /home/cristian/intelfpga_lite/20.1/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/10.1.1/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libm.a
+END GROUP
+LOAD /home/cristian/intelfpga_lite/20.1/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/10.1.1/libgcc.a
+                0x0000000000008000                __alt_mem_onchip_memory2_0 = 0x8000
+
+.entry          0x0000000000008000       0x20
+ *(.entry)
+ .entry         0x0000000000008000       0x20 ../lcd_firmware_bsp//obj/HAL/src/crt0.o
+                0x0000000000008000                __reset
+                0x000000000000801c                _exit
+
+.exceptions     0x0000000000008020        0x0
+                0x0000000000008020                PROVIDE (__ram_exceptions_start = ABSOLUTE (.))
+                0x0000000000008020                . = ALIGN (0x20)
+ *(.irq)
+ *(.exceptions.entry.label)
+ *(.exceptions.entry.user)
+ *(.exceptions.entry.ecc_fatal)
+ *(.exceptions.entry)
+ *(.exceptions.irqtest.user)
+ *(.exceptions.irqtest)
+ *(.exceptions.irqhandler.user)
+ *(.exceptions.irqhandler)
+ *(.exceptions.irqreturn.user)
+ *(.exceptions.irqreturn)
+ *(.exceptions.notirq.label)
+ *(.exceptions.notirq.user)
+ *(.exceptions.notirq)
+ *(.exceptions.soft.user)
+ *(.exceptions.soft)
+ *(.exceptions.unknown.user)
+ *(.exceptions.unknown)
+ *(.exceptions.exit.label)
+ *(.exceptions.exit.user)
+ *(.exceptions.exit)
+ *(.exceptions)
+                0x0000000000008020                PROVIDE (__ram_exceptions_end = ABSOLUTE (.))
+                0x0000000000008020                PROVIDE (__flash_exceptions_start = LOADADDR (.exceptions))
+
+.text           0x0000000000008020      0x648
+                [!provide]                        PROVIDE (stext = ABSOLUTE (.))
+ *(.interp)
+ *(.hash)
+ *(.dynsym)
+ *(.dynstr)
+ *(.gnu.version)
+ *(.gnu.version_d)
+ *(.gnu.version_r)
+ *(.rel.init)
+ *(.rela.init)
+ *(.rel.text .rel.text.* .rel.gnu.linkonce.t.*)
+ *(.rela.text .rela.text.* .rela.gnu.linkonce.t.*)
+ *(.rel.fini)
+ *(.rela.fini)
+ *(.rel.rodata .rel.rodata.* .rel.gnu.linkonce.r.*)
+ *(.rela.rodata .rela.rodata.* .rela.gnu.linkonce.r.*)
+ *(.rel.data .rel.data.* .rel.gnu.linkonce.d.*)
+ *(.rela.data .rela.data.* .rela.gnu.linkonce.d.*)
+ *(.rel.tdata .rel.tdata.* .rel.gnu.linkonce.td.*)
+ *(.rela.tdata .rela.tdata.* .rela.gnu.linkonce.td.*)
+ *(.rel.tbss .rel.tbss.* .rel.gnu.linkonce.tb.*)
+ *(.rela.tbss .rela.tbss.* .rela.gnu.linkonce.tb.*)
+ *(.rel.ctors)
+ *(.rela.ctors)
+ *(.rel.dtors)
+ *(.rela.dtors)
+ *(.rel.got)
+ *(.rela.got)
+ *(.rel.sdata .rel.sdata.* .rel.gnu.linkonce.s.*)
+ *(.rela.sdata .rela.sdata.* .rela.gnu.linkonce.s.*)
+ *(.rel.sbss .rel.sbss.* .rel.gnu.linkonce.sb.*)
+ *(.rela.sbss .rela.sbss.* .rela.gnu.linkonce.sb.*)
+ *(.rel.sdata2 .rel.sdata2.* .rel.gnu.linkonce.s2.*)
+ *(.rela.sdata2 .rela.sdata2.* .rela.gnu.linkonce.s2.*)
+ *(.rel.sbss2 .rel.sbss2.* .rel.gnu.linkonce.sb2.*)
+ *(.rela.sbss2 .rela.sbss2.* .rela.gnu.linkonce.sb2.*)
+ *(.rel.bss .rel.bss.* .rel.gnu.linkonce.b.*)
+ *(.rela.bss .rela.bss.* .rela.gnu.linkonce.b.*)
+ *(.rel.plt)
+ *(.rela.plt)
+ *(.rel.dyn)
+ *(.init)
+ *(.plt)
+ *(.text .stub .text.* .gnu.linkonce.t.*)
+ .text          0x0000000000008020       0x4c ../lcd_firmware_bsp//obj/HAL/src/crt0.o
+                0x0000000000008020                _start
+ .text          0x000000000000806c       0xbc obj/default/main.o
+                0x000000000000806c                lcdData
+                0x000000000000808c                lcdSendString
+                0x00000000000080d0                lcdGoToXY
+                0x00000000000080fc                lcd_init
+                0x0000000000008110                isPressedKEY0
+ .text.startup  0x0000000000008128      0x1ac obj/default/main.o
+                0x0000000000008128                main
+ .text          0x00000000000082d4       0x84 ../lcd_firmware_bsp//libhal_bsp.a(alt_load.o)
+                0x00000000000082d4                alt_load
+ .text          0x0000000000008358       0x2c ../lcd_firmware_bsp//libhal_bsp.a(alt_main.o)
+                0x0000000000008358                alt_main
+ .text          0x0000000000008384      0x140 ../lcd_firmware_bsp//libhal_bsp.a(alt_printf.o)
+                0x0000000000008384                alt_printf
+ .text          0x00000000000084c4       0x4c ../lcd_firmware_bsp//libhal_bsp.a(alt_putchar.o)
+                0x00000000000084c4                alt_putchar
+ .text          0x0000000000008510       0x38 ../lcd_firmware_bsp//libhal_bsp.a(alt_putstr.o)
+                0x0000000000008510                alt_putstr
+ .text          0x0000000000008548       0x24 ../lcd_firmware_bsp//libhal_bsp.a(alt_sys_init.o)
+                0x0000000000008548                alt_irq_init
+                0x0000000000008568                alt_sys_init
+ .text          0x000000000000856c       0x30 ../lcd_firmware_bsp//libhal_bsp.a(altera_avalon_jtag_uart_write.o)
+                0x000000000000856c                altera_avalon_jtag_uart_write
+ .text          0x000000000000859c       0x18 ../lcd_firmware_bsp//libhal_bsp.a(alt_dcache_flush_all.o)
+                0x000000000000859c                alt_dcache_flush_all
+ .text          0x00000000000085b4        0xc ../lcd_firmware_bsp//libhal_bsp.a(alt_icache_flush_all.o)
+                0x00000000000085b4                alt_icache_flush_all
+ .text          0x00000000000085c0        0x8 ../lcd_firmware_bsp//libhal_bsp.a(altera_nios2_gen2_irq.o)
+                0x00000000000085c0                altera_nios2_gen2_irq_init
+ .text          0x00000000000085c8       0x5c ../lcd_firmware_bsp//libhal_bsp.a(alt_icache_flush.o)
+                0x00000000000085c8                alt_icache_flush
+ .text          0x0000000000008624        0x0 /home/cristian/intelfpga_lite/20.1/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/10.1.1/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libsmallc.a(lib_a-memcpy.o)
+ .text.memcpy   0x0000000000008624       0x28 /home/cristian/intelfpga_lite/20.1/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/10.1.1/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libsmallc.a(lib_a-memcpy.o)
+                0x0000000000008624                memcpy
+ .text          0x000000000000864c        0x0 /home/cristian/intelfpga_lite/20.1/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/10.1.1/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libsmallc.a(lib_a-strlen.o)
+ .text.strlen   0x000000000000864c       0x1c /home/cristian/intelfpga_lite/20.1/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/10.1.1/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libsmallc.a(lib_a-strlen.o)
+                0x000000000000864c                strlen
+ *(.gnu.warning.*)
+ *(.fini)
+                [!provide]                        PROVIDE (__etext = ABSOLUTE (.))
+                [!provide]                        PROVIDE (_etext = ABSOLUTE (.))
+                [!provide]                        PROVIDE (etext = ABSOLUTE (.))
+ *(.eh_frame_hdr)
+                0x0000000000008668                . = ALIGN (0x4)
+                [!provide]                        PROVIDE (__preinit_array_start = ABSOLUTE (.))
+ *(.preinit_array)
+                [!provide]                        PROVIDE (__preinit_array_end = ABSOLUTE (.))
+                [!provide]                        PROVIDE (__init_array_start = ABSOLUTE (.))
+ *(.init_array)
+                [!provide]                        PROVIDE (__init_array_end = ABSOLUTE (.))
+                [!provide]                        PROVIDE (__fini_array_start = ABSOLUTE (.))
+ *(.fini_array)
+                [!provide]                        PROVIDE (__fini_array_end = ABSOLUTE (.))
+ *(.eh_frame)
+ *(.gcc_except_table .gcc_except_table.*)
+ *(.dynamic)
+                [!provide]                        PROVIDE (__CTOR_LIST__ = ABSOLUTE (.))
+ *(.ctors)
+ *(SORT_BY_NAME(.ctors.*))
+                [!provide]                        PROVIDE (__CTOR_END__ = ABSOLUTE (.))
+                [!provide]                        PROVIDE (__DTOR_LIST__ = ABSOLUTE (.))
+ *(.dtors)
+ *(SORT_BY_NAME(.dtors.*))
+                [!provide]                        PROVIDE (__DTOR_END__ = ABSOLUTE (.))
+ *(.jcr)
+                0x0000000000008668                . = ALIGN (0x4)
+
+.rodata         0x0000000000008668      0x144
+                0x0000000000008668                PROVIDE (__ram_rodata_start = ABSOLUTE (.))
+                0x0000000000008668                . = ALIGN (0x4)
+ *(.rodata .rodata.* .gnu.linkonce.r.*)
+ .rodata.str1.4
+                0x0000000000008668      0x143 obj/default/main.o
+ *(.rodata1)
+                0x00000000000087ac                . = ALIGN (0x4)
+ *fill*         0x00000000000087ab        0x1 
+                0x00000000000087ac                PROVIDE (__ram_rodata_end = ABSOLUTE (.))
+                0x0000000000008668                PROVIDE (__flash_rodata_start = LOADADDR (.rodata))
+
+.rwdata         0x00000000000087ac        0x4 load address 0x00000000000087b0
+                0x00000000000087ac                PROVIDE (__ram_rwdata_start = ABSOLUTE (.))
+                0x00000000000087ac                . = ALIGN (0x4)
+ *(.got.plt)
+ *(.got)
+ *(.data1)
+ *(.data .data.* .gnu.linkonce.d.*)
+ .data          0x00000000000087ac        0x0 ../lcd_firmware_bsp//obj/HAL/src/crt0.o
+ .data          0x00000000000087ac        0x0 obj/default/main.o
+ .data          0x00000000000087ac        0x0 ../lcd_firmware_bsp//libhal_bsp.a(alt_load.o)
+ .data          0x00000000000087ac        0x0 ../lcd_firmware_bsp//libhal_bsp.a(alt_main.o)
+ .data          0x00000000000087ac        0x0 ../lcd_firmware_bsp//libhal_bsp.a(alt_printf.o)
+ .data          0x00000000000087ac        0x0 ../lcd_firmware_bsp//libhal_bsp.a(alt_putchar.o)
+ .data          0x00000000000087ac        0x0 ../lcd_firmware_bsp//libhal_bsp.a(alt_putstr.o)
+ .data          0x00000000000087ac        0x0 ../lcd_firmware_bsp//libhal_bsp.a(alt_sys_init.o)
+ .data          0x00000000000087ac        0x0 ../lcd_firmware_bsp//libhal_bsp.a(altera_avalon_jtag_uart_write.o)
+ .data          0x00000000000087ac        0x0 ../lcd_firmware_bsp//libhal_bsp.a(alt_dcache_flush_all.o)
+ .data          0x00000000000087ac        0x0 ../lcd_firmware_bsp//libhal_bsp.a(alt_icache_flush_all.o)
+ .data          0x00000000000087ac        0x0 ../lcd_firmware_bsp//libhal_bsp.a(altera_nios2_gen2_irq.o)
+ .data          0x00000000000087ac        0x0 ../lcd_firmware_bsp//libhal_bsp.a(alt_icache_flush.o)
+ .data          0x00000000000087ac        0x0 /home/cristian/intelfpga_lite/20.1/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/10.1.1/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libsmallc.a(lib_a-memcpy.o)
+ .data          0x00000000000087ac        0x0 /home/cristian/intelfpga_lite/20.1/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/10.1.1/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libsmallc.a(lib_a-strlen.o)
+                0x00000000000107ac                _gp = ABSOLUTE ((. + 0x8000))
+                [!provide]                        PROVIDE (gp = _gp)
+ *(.rwdata .rwdata.*)
+ *(.sdata .sdata.* .gnu.linkonce.s.*)
+ .sdata         0x00000000000087ac        0x4 ../lcd_firmware_bsp//libhal_bsp.a(alt_sys_init.o)
+                0x00000000000087ac                jtag_uart_0
+ *(.sdata2 .sdata2.* .gnu.linkonce.s2.*)
+                0x00000000000087b0                . = ALIGN (0x4)
+                0x00000000000087b0                _edata = ABSOLUTE (.)
+                [!provide]                        PROVIDE (edata = ABSOLUTE (.))
+                0x00000000000087b0                PROVIDE (__ram_rwdata_end = ABSOLUTE (.))
+                0x00000000000087b0                PROVIDE (__flash_rwdata_start = LOADADDR (.rwdata))
+
+.bss            0x00000000000087b4        0xc
+                0x00000000000087b4                __bss_start = ABSOLUTE (.)
+                [!provide]                        PROVIDE (__sbss_start = ABSOLUTE (.))
+                [!provide]                        PROVIDE (___sbss_start = ABSOLUTE (.))
+ *(.dynsbss)
+ *(.sbss .sbss.* .gnu.linkonce.sb.*)
+ .sbss          0x00000000000087b4        0xc ../lcd_firmware_bsp//libhal_bsp.a(alt_main.o)
+                0x00000000000087b4                alt_envp
+                0x00000000000087b8                alt_argv
+                0x00000000000087bc                alt_argc
+ *(.sbss2 .sbss2.* .gnu.linkonce.sb2.*)
+ *(.scommon)
+                [!provide]                        PROVIDE (__sbss_end = ABSOLUTE (.))
+                [!provide]                        PROVIDE (___sbss_end = ABSOLUTE (.))
+ *(.dynbss)
+ *(.bss .bss.* .gnu.linkonce.b.*)
+ .bss           0x00000000000087c0        0x0 ../lcd_firmware_bsp//obj/HAL/src/crt0.o
+ .bss           0x00000000000087c0        0x0 obj/default/main.o
+ .bss           0x00000000000087c0        0x0 ../lcd_firmware_bsp//libhal_bsp.a(alt_load.o)
+ .bss           0x00000000000087c0        0x0 ../lcd_firmware_bsp//libhal_bsp.a(alt_main.o)
+ .bss           0x00000000000087c0        0x0 ../lcd_firmware_bsp//libhal_bsp.a(alt_printf.o)
+ .bss           0x00000000000087c0        0x0 ../lcd_firmware_bsp//libhal_bsp.a(alt_putchar.o)
+ .bss           0x00000000000087c0        0x0 ../lcd_firmware_bsp//libhal_bsp.a(alt_putstr.o)
+ .bss           0x00000000000087c0        0x0 ../lcd_firmware_bsp//libhal_bsp.a(alt_sys_init.o)
+ .bss           0x00000000000087c0        0x0 ../lcd_firmware_bsp//libhal_bsp.a(altera_avalon_jtag_uart_write.o)
+ .bss           0x00000000000087c0        0x0 ../lcd_firmware_bsp//libhal_bsp.a(alt_dcache_flush_all.o)
+ .bss           0x00000000000087c0        0x0 ../lcd_firmware_bsp//libhal_bsp.a(alt_icache_flush_all.o)
+ .bss           0x00000000000087c0        0x0 ../lcd_firmware_bsp//libhal_bsp.a(altera_nios2_gen2_irq.o)
+ .bss           0x00000000000087c0        0x0 ../lcd_firmware_bsp//libhal_bsp.a(alt_icache_flush.o)
+ .bss           0x00000000000087c0        0x0 /home/cristian/intelfpga_lite/20.1/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/10.1.1/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libsmallc.a(lib_a-memcpy.o)
+ .bss           0x00000000000087c0        0x0 /home/cristian/intelfpga_lite/20.1/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/10.1.1/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libsmallc.a(lib_a-strlen.o)
+ *(COMMON)
+                0x00000000000087c0                . = ALIGN (0x4)
+                0x00000000000087c0                __bss_end = ABSOLUTE (.)
+
+.onchip_memory2_0
+                0x00000000000087c0        0x0
+                [!provide]                        PROVIDE (_alt_partition_onchip_memory2_0_start = ABSOLUTE (.))
+ *(.onchip_memory2_0 .onchip_memory2_0. onchip_memory2_0.*)
+                0x00000000000087c0                . = ALIGN (0x4)
+                [!provide]                        PROVIDE (_alt_partition_onchip_memory2_0_end = ABSOLUTE (.))
+                0x00000000000087c0                _end = ABSOLUTE (.)
+                0x00000000000087c0                end = ABSOLUTE (.)
+                0x00000000000087c0                __alt_stack_base = ABSOLUTE (.)
+                [!provide]                        PROVIDE (_alt_partition_onchip_memory2_0_load_addr = LOADADDR (.onchip_memory2_0))
+
+.stab
+ *(.stab)
+
+.stabstr
+ *(.stabstr)
+
+.stab.excl
+ *(.stab.excl)
+
+.stab.exclstr
+ *(.stab.exclstr)
+
+.stab.index
+ *(.stab.index)
+
+.stab.indexstr
+ *(.stab.indexstr)
+
+.comment        0x0000000000000000       0x2d
+ *(.comment)
+ .comment       0x0000000000000000       0x2d obj/default/main.o
+                                         0x2e (size before relaxing)
+ .comment       0x000000000000002d       0x2e ../lcd_firmware_bsp//libhal_bsp.a(alt_load.o)
+ .comment       0x000000000000002d       0x2e ../lcd_firmware_bsp//libhal_bsp.a(alt_main.o)
+ .comment       0x000000000000002d       0x2e ../lcd_firmware_bsp//libhal_bsp.a(alt_printf.o)
+ .comment       0x000000000000002d       0x2e ../lcd_firmware_bsp//libhal_bsp.a(alt_putchar.o)
+ .comment       0x000000000000002d       0x2e ../lcd_firmware_bsp//libhal_bsp.a(alt_putstr.o)
+ .comment       0x000000000000002d       0x2e ../lcd_firmware_bsp//libhal_bsp.a(alt_sys_init.o)
+ .comment       0x000000000000002d       0x2e ../lcd_firmware_bsp//libhal_bsp.a(altera_avalon_jtag_uart_write.o)
+ .comment       0x000000000000002d       0x2e ../lcd_firmware_bsp//libhal_bsp.a(alt_dcache_flush_all.o)
+ .comment       0x000000000000002d       0x2e ../lcd_firmware_bsp//libhal_bsp.a(alt_icache_flush_all.o)
+ .comment       0x000000000000002d       0x2e ../lcd_firmware_bsp//libhal_bsp.a(altera_nios2_gen2_irq.o)
+ .comment       0x000000000000002d       0x2e ../lcd_firmware_bsp//libhal_bsp.a(alt_icache_flush.o)
+ .comment       0x000000000000002d       0x2e /home/cristian/intelfpga_lite/20.1/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/10.1.1/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libsmallc.a(lib_a-memcpy.o)
+ .comment       0x000000000000002d       0x2e /home/cristian/intelfpga_lite/20.1/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/10.1.1/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libsmallc.a(lib_a-strlen.o)
+
+.debug
+ *(.debug)
+
+.line
+ *(.line)
+
+.debug_srcinfo
+ *(.debug_srcinfo)
+
+.debug_sfnames
+ *(.debug_sfnames)
+
+.debug_aranges  0x0000000000000000      0x1f0
+ *(.debug_aranges)
+ .debug_aranges
+                0x0000000000000000       0x28 ../lcd_firmware_bsp//obj/HAL/src/crt0.o
+ .debug_aranges
+                0x0000000000000028       0x28 obj/default/main.o
+ .debug_aranges
+                0x0000000000000050       0x20 ../lcd_firmware_bsp//libhal_bsp.a(alt_load.o)
+ .debug_aranges
+                0x0000000000000070       0x20 ../lcd_firmware_bsp//libhal_bsp.a(alt_main.o)
+ .debug_aranges
+                0x0000000000000090       0x20 ../lcd_firmware_bsp//libhal_bsp.a(alt_printf.o)
+ .debug_aranges
+                0x00000000000000b0       0x20 ../lcd_firmware_bsp//libhal_bsp.a(alt_putchar.o)
+ .debug_aranges
+                0x00000000000000d0       0x20 ../lcd_firmware_bsp//libhal_bsp.a(alt_putstr.o)
+ .debug_aranges
+                0x00000000000000f0       0x20 ../lcd_firmware_bsp//libhal_bsp.a(alt_sys_init.o)
+ .debug_aranges
+                0x0000000000000110       0x20 ../lcd_firmware_bsp//libhal_bsp.a(altera_avalon_jtag_uart_write.o)
+ .debug_aranges
+                0x0000000000000130       0x20 ../lcd_firmware_bsp//libhal_bsp.a(alt_dcache_flush_all.o)
+ .debug_aranges
+                0x0000000000000150       0x20 ../lcd_firmware_bsp//libhal_bsp.a(alt_icache_flush_all.o)
+ .debug_aranges
+                0x0000000000000170       0x20 ../lcd_firmware_bsp//libhal_bsp.a(altera_nios2_gen2_irq.o)
+ .debug_aranges
+                0x0000000000000190       0x20 ../lcd_firmware_bsp//libhal_bsp.a(alt_icache_flush.o)
+ .debug_aranges
+                0x00000000000001b0       0x20 /home/cristian/intelfpga_lite/20.1/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/10.1.1/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libsmallc.a(lib_a-memcpy.o)
+ .debug_aranges
+                0x00000000000001d0       0x20 /home/cristian/intelfpga_lite/20.1/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/10.1.1/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libsmallc.a(lib_a-strlen.o)
+
+.debug_pubnames
+ *(.debug_pubnames)
+
+.debug_info     0x0000000000000000     0x12ee
+ *(.debug_info .gnu.linkonce.wi.*)
+ .debug_info    0x0000000000000000       0x22 ../lcd_firmware_bsp//obj/HAL/src/crt0.o
+ .debug_info    0x0000000000000022      0x439 obj/default/main.o
+ .debug_info    0x000000000000045b      0x267 ../lcd_firmware_bsp//libhal_bsp.a(alt_load.o)
+ .debug_info    0x00000000000006c2      0x129 ../lcd_firmware_bsp//libhal_bsp.a(alt_main.o)
+ .debug_info    0x00000000000007eb      0x170 ../lcd_firmware_bsp//libhal_bsp.a(alt_printf.o)
+ .debug_info    0x000000000000095b      0x122 ../lcd_firmware_bsp//libhal_bsp.a(alt_putchar.o)
+ .debug_info    0x0000000000000a7d      0x132 ../lcd_firmware_bsp//libhal_bsp.a(alt_putstr.o)
+ .debug_info    0x0000000000000baf      0x12a ../lcd_firmware_bsp//libhal_bsp.a(alt_sys_init.o)
+ .debug_info    0x0000000000000cd9      0x14a ../lcd_firmware_bsp//libhal_bsp.a(altera_avalon_jtag_uart_write.o)
+ .debug_info    0x0000000000000e23       0xa5 ../lcd_firmware_bsp//libhal_bsp.a(alt_dcache_flush_all.o)
+ .debug_info    0x0000000000000ec8       0xb3 ../lcd_firmware_bsp//libhal_bsp.a(alt_icache_flush_all.o)
+ .debug_info    0x0000000000000f7b       0x8c ../lcd_firmware_bsp//libhal_bsp.a(altera_nios2_gen2_irq.o)
+ .debug_info    0x0000000000001007       0xef ../lcd_firmware_bsp//libhal_bsp.a(alt_icache_flush.o)
+ .debug_info    0x00000000000010f6      0x128 /home/cristian/intelfpga_lite/20.1/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/10.1.1/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libsmallc.a(lib_a-memcpy.o)
+ .debug_info    0x000000000000121e       0xd0 /home/cristian/intelfpga_lite/20.1/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/10.1.1/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libsmallc.a(lib_a-strlen.o)
+
+.debug_abbrev   0x0000000000000000      0xaf6
+ *(.debug_abbrev)
+ .debug_abbrev  0x0000000000000000       0x12 ../lcd_firmware_bsp//obj/HAL/src/crt0.o
+ .debug_abbrev  0x0000000000000012      0x143 obj/default/main.o
+ .debug_abbrev  0x0000000000000155      0x125 ../lcd_firmware_bsp//libhal_bsp.a(alt_load.o)
+ .debug_abbrev  0x000000000000027a       0xba ../lcd_firmware_bsp//libhal_bsp.a(alt_main.o)
+ .debug_abbrev  0x0000000000000334      0x10a ../lcd_firmware_bsp//libhal_bsp.a(alt_printf.o)
+ .debug_abbrev  0x000000000000043e       0xe1 ../lcd_firmware_bsp//libhal_bsp.a(alt_putchar.o)
+ .debug_abbrev  0x000000000000051f       0xe0 ../lcd_firmware_bsp//libhal_bsp.a(alt_putstr.o)
+ .debug_abbrev  0x00000000000005ff      0x10b ../lcd_firmware_bsp//libhal_bsp.a(alt_sys_init.o)
+ .debug_abbrev  0x000000000000070a       0xea ../lcd_firmware_bsp//libhal_bsp.a(altera_avalon_jtag_uart_write.o)
+ .debug_abbrev  0x00000000000007f4       0x61 ../lcd_firmware_bsp//libhal_bsp.a(alt_dcache_flush_all.o)
+ .debug_abbrev  0x0000000000000855       0x73 ../lcd_firmware_bsp//libhal_bsp.a(alt_icache_flush_all.o)
+ .debug_abbrev  0x00000000000008c8       0x44 ../lcd_firmware_bsp//libhal_bsp.a(altera_nios2_gen2_irq.o)
+ .debug_abbrev  0x000000000000090c       0x9f ../lcd_firmware_bsp//libhal_bsp.a(alt_icache_flush.o)
+ .debug_abbrev  0x00000000000009ab       0xbe /home/cristian/intelfpga_lite/20.1/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/10.1.1/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libsmallc.a(lib_a-memcpy.o)
+ .debug_abbrev  0x0000000000000a69       0x8d /home/cristian/intelfpga_lite/20.1/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/10.1.1/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libsmallc.a(lib_a-strlen.o)
+
+.debug_line     0x0000000000000000      0xf7f
+ *(.debug_line)
+ .debug_line    0x0000000000000000       0x72 ../lcd_firmware_bsp//obj/HAL/src/crt0.o
+ .debug_line    0x0000000000000072      0x30e obj/default/main.o
+ .debug_line    0x0000000000000380      0x101 ../lcd_firmware_bsp//libhal_bsp.a(alt_load.o)
+ .debug_line    0x0000000000000481       0xe0 ../lcd_firmware_bsp//libhal_bsp.a(alt_main.o)
+ .debug_line    0x0000000000000561      0x1f7 ../lcd_firmware_bsp//libhal_bsp.a(alt_printf.o)
+ .debug_line    0x0000000000000758       0x7d ../lcd_firmware_bsp//libhal_bsp.a(alt_putchar.o)
+ .debug_line    0x00000000000007d5       0xca ../lcd_firmware_bsp//libhal_bsp.a(alt_putstr.o)
+ .debug_line    0x000000000000089f       0xd7 ../lcd_firmware_bsp//libhal_bsp.a(alt_sys_init.o)
+ .debug_line    0x0000000000000976       0xd6 ../lcd_firmware_bsp//libhal_bsp.a(altera_avalon_jtag_uart_write.o)
+ .debug_line    0x0000000000000a4c       0x85 ../lcd_firmware_bsp//libhal_bsp.a(alt_dcache_flush_all.o)
+ .debug_line    0x0000000000000ad1       0x77 ../lcd_firmware_bsp//libhal_bsp.a(alt_icache_flush_all.o)
+ .debug_line    0x0000000000000b48       0x5a ../lcd_firmware_bsp//libhal_bsp.a(altera_nios2_gen2_irq.o)
+ .debug_line    0x0000000000000ba2       0xd9 ../lcd_firmware_bsp//libhal_bsp.a(alt_icache_flush.o)
+ .debug_line    0x0000000000000c7b      0x18a /home/cristian/intelfpga_lite/20.1/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/10.1.1/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libsmallc.a(lib_a-memcpy.o)
+ .debug_line    0x0000000000000e05      0x17a /home/cristian/intelfpga_lite/20.1/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/10.1.1/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libsmallc.a(lib_a-strlen.o)
+
+.debug_frame    0x0000000000000000      0x2a4
+ *(.debug_frame)
+ .debug_frame   0x0000000000000000       0x8c obj/default/main.o
+ .debug_frame   0x000000000000008c       0x2c ../lcd_firmware_bsp//libhal_bsp.a(alt_load.o)
+ .debug_frame   0x00000000000000b8       0x2c ../lcd_firmware_bsp//libhal_bsp.a(alt_main.o)
+ .debug_frame   0x00000000000000e4       0x44 ../lcd_firmware_bsp//libhal_bsp.a(alt_printf.o)
+ .debug_frame   0x0000000000000128       0x30 ../lcd_firmware_bsp//libhal_bsp.a(alt_putchar.o)
+ .debug_frame   0x0000000000000158       0x30 ../lcd_firmware_bsp//libhal_bsp.a(alt_putstr.o)
+ .debug_frame   0x0000000000000188       0x3c ../lcd_firmware_bsp//libhal_bsp.a(alt_sys_init.o)
+ .debug_frame   0x00000000000001c4       0x20 ../lcd_firmware_bsp//libhal_bsp.a(altera_avalon_jtag_uart_write.o)
+ .debug_frame   0x00000000000001e4       0x20 ../lcd_firmware_bsp//libhal_bsp.a(alt_dcache_flush_all.o)
+ .debug_frame   0x0000000000000204       0x20 ../lcd_firmware_bsp//libhal_bsp.a(alt_icache_flush_all.o)
+ .debug_frame   0x0000000000000224       0x20 ../lcd_firmware_bsp//libhal_bsp.a(altera_nios2_gen2_irq.o)
+ .debug_frame   0x0000000000000244       0x20 ../lcd_firmware_bsp//libhal_bsp.a(alt_icache_flush.o)
+ .debug_frame   0x0000000000000264       0x20 /home/cristian/intelfpga_lite/20.1/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/10.1.1/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libsmallc.a(lib_a-memcpy.o)
+ .debug_frame   0x0000000000000284       0x20 /home/cristian/intelfpga_lite/20.1/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/10.1.1/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libsmallc.a(lib_a-strlen.o)
+
+.debug_str      0x0000000000000000      0x6ad
+ *(.debug_str)
+ .debug_str     0x0000000000000000       0x5c ../lcd_firmware_bsp//obj/HAL/src/crt0.o
+ .debug_str     0x000000000000005c      0x154 obj/default/main.o
+                                        0x1aa (size before relaxing)
+ .debug_str     0x00000000000001b0      0x12c ../lcd_firmware_bsp//libhal_bsp.a(alt_load.o)
+                                        0x256 (size before relaxing)
+ .debug_str     0x00000000000002dc       0x5e ../lcd_firmware_bsp//libhal_bsp.a(alt_main.o)
+                                        0x186 (size before relaxing)
+ .debug_str     0x000000000000033a       0x59 ../lcd_firmware_bsp//libhal_bsp.a(alt_printf.o)
+                                        0x111 (size before relaxing)
+ .debug_str     0x0000000000000393       0x60 ../lcd_firmware_bsp//libhal_bsp.a(alt_putchar.o)
+                                        0x18f (size before relaxing)
+ .debug_str     0x00000000000003f3       0x1c ../lcd_firmware_bsp//libhal_bsp.a(alt_putstr.o)
+                                        0x194 (size before relaxing)
+ .debug_str     0x000000000000040f       0x6b ../lcd_firmware_bsp//libhal_bsp.a(alt_sys_init.o)
+                                        0x1d4 (size before relaxing)
+ .debug_str     0x000000000000047a       0x38 ../lcd_firmware_bsp//libhal_bsp.a(altera_avalon_jtag_uart_write.o)
+                                        0x1c3 (size before relaxing)
+ .debug_str     0x00000000000004b2       0x1f ../lcd_firmware_bsp//libhal_bsp.a(alt_dcache_flush_all.o)
+                                        0x157 (size before relaxing)
+ .debug_str     0x00000000000004d1       0x30 ../lcd_firmware_bsp//libhal_bsp.a(alt_icache_flush_all.o)
+                                        0x168 (size before relaxing)
+ .debug_str     0x0000000000000501       0x20 ../lcd_firmware_bsp//libhal_bsp.a(altera_nios2_gen2_irq.o)
+                                        0x15e (size before relaxing)
+ .debug_str     0x0000000000000521       0x1b ../lcd_firmware_bsp//libhal_bsp.a(alt_icache_flush.o)
+                                        0x15d (size before relaxing)
+ .debug_str     0x000000000000053c      0x135 /home/cristian/intelfpga_lite/20.1/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/10.1.1/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libsmallc.a(lib_a-memcpy.o)
+                                        0x1d1 (size before relaxing)
+ .debug_str     0x0000000000000671       0x3c /home/cristian/intelfpga_lite/20.1/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/10.1.1/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libsmallc.a(lib_a-strlen.o)
+                                        0x1c3 (size before relaxing)
+
+.debug_loc      0x0000000000000000      0x63b
+ *(.debug_loc)
+ .debug_loc     0x0000000000000000       0xae obj/default/main.o
+ .debug_loc     0x00000000000000ae      0x23c ../lcd_firmware_bsp//libhal_bsp.a(alt_printf.o)
+ .debug_loc     0x00000000000002ea       0x32 ../lcd_firmware_bsp//libhal_bsp.a(alt_putchar.o)
+ .debug_loc     0x000000000000031c       0x3f ../lcd_firmware_bsp//libhal_bsp.a(alt_putstr.o)
+ .debug_loc     0x000000000000035b       0x25 ../lcd_firmware_bsp//libhal_bsp.a(alt_sys_init.o)
+ .debug_loc     0x0000000000000380       0x93 ../lcd_firmware_bsp//libhal_bsp.a(altera_avalon_jtag_uart_write.o)
+ .debug_loc     0x0000000000000413       0x23 ../lcd_firmware_bsp//libhal_bsp.a(alt_dcache_flush_all.o)
+ .debug_loc     0x0000000000000436       0x97 ../lcd_firmware_bsp//libhal_bsp.a(alt_icache_flush.o)
+ .debug_loc     0x00000000000004cd      0x12a /home/cristian/intelfpga_lite/20.1/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/10.1.1/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libsmallc.a(lib_a-memcpy.o)
+ .debug_loc     0x00000000000005f7       0x44 /home/cristian/intelfpga_lite/20.1/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/10.1.1/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libsmallc.a(lib_a-strlen.o)
+
+.debug_macinfo
+ *(.debug_macinfo)
+
+.debug_weaknames
+ *(.debug_weaknames)
+
+.debug_funcnames
+ *(.debug_funcnames)
+
+.debug_typenames
+ *(.debug_typenames)
+
+.debug_varnames
+ *(.debug_varnames)
+
+.debug_alt_sim_info
+                0x0000000000000000       0x30
+ *(.debug_alt_sim_info)
+ .debug_alt_sim_info
+                0x0000000000000000       0x30 ../lcd_firmware_bsp//obj/HAL/src/crt0.o
+                0x0000000000010000                __alt_data_end = 0x10000
+                0x0000000000010000                PROVIDE (__alt_stack_pointer = __alt_data_end)
+                [!provide]                        PROVIDE (__alt_stack_limit = __alt_stack_base)
+                [!provide]                        PROVIDE (__alt_heap_start = end)
+                [!provide]                        PROVIDE (__alt_heap_limit = 0x10000)
+OUTPUT(lcd_firmware.elf elf32-littlenios2)
+LOAD linker stubs
+
+.debug_ranges   0x0000000000000000       0xb8
+ .debug_ranges  0x0000000000000000       0x20 ../lcd_firmware_bsp//obj/HAL/src/crt0.o
+ .debug_ranges  0x0000000000000020       0x18 obj/default/main.o
+ .debug_ranges  0x0000000000000038       0x30 ../lcd_firmware_bsp//libhal_bsp.a(alt_load.o)
+ .debug_ranges  0x0000000000000068       0x20 ../lcd_firmware_bsp//libhal_bsp.a(alt_printf.o)
+ .debug_ranges  0x0000000000000088       0x10 ../lcd_firmware_bsp//libhal_bsp.a(alt_icache_flush.o)
+ .debug_ranges  0x0000000000000098       0x10 /home/cristian/intelfpga_lite/20.1/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/10.1.1/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libsmallc.a(lib_a-memcpy.o)
+ .debug_ranges  0x00000000000000a8       0x10 /home/cristian/intelfpga_lite/20.1/nios2eds/bin/gnu/H-x86_64-pc-linux-gnu/bin/../lib/gcc/nios2-elf/10.1.1/../../../../../H-x86_64-pc-linux-gnu/nios2-elf/lib/libsmallc.a(lib_a-strlen.o)
